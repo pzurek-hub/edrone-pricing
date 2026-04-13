@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>edrone — Funkcje Premium | Cennik</title>
+    <title>Cennik | edrone | CRM oraz Marketing Automation dla e-commerce</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -20,8 +20,8 @@
             --color-lightgrey: #E5E5E5;
             --border-radius: 0px;
             --shadow-card: rgba(0, 0, 0, 0.2) 0px 20px 50px -10px;
-            --grid-max-width: 1420px;
-            --grid-space: 60px;
+            --max-width: 1440;
+            --font-size: 16;
             --font-heading: 'Helvetica Neue', 'Arial', sans-serif;
             --font-body: 'Roboto', sans-serif;
         }
@@ -36,17 +36,272 @@
         }
 
         /* ============================
-           PREMIUM SECTION
-           Matches edrone.me/pl/cennik
+           HEADER
            ============================ */
-
-        .premium-section {
-            background: var(--color-ghostwhite);
-            padding: clamp(40px, 5.5vw, 100px) var(--grid-space);
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            height: 68px;
+            display: flex;
+            align-items: center;
+            padding: 0 60px;
         }
 
-        .premium-inner {
-            max-width: var(--grid-max-width);
+        .header-inner {
+            max-width: 1420px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-jet);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .header-nav a {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--color-jet);
+            text-decoration: none;
+            letter-spacing: 0.1px;
+        }
+
+        .header-cta {
+            background: var(--color-yellow);
+            color: var(--color-black);
+            font-size: 18px;
+            font-weight: 500;
+            padding: 13px 32px;
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 48px;
+        }
+
+        /* ============================
+           BREADCRUMBS
+           ============================ */
+        .breadcrumbs {
+            height: 48px;
+            display: flex;
+            align-items: center;
+            padding: 0 60px;
+            font-size: 16px;
+            color: var(--color-jet);
+        }
+
+        .breadcrumbs span { opacity: 0.5; }
+        .breadcrumbs .sep { margin: 0 8px; opacity: 0.3; }
+        .breadcrumbs .current { opacity: 1; }
+
+        /* ============================
+           HERO / PRICING CALCULATOR
+           ============================ */
+        .hero-pricing {
+            position: relative;
+            padding: 40px 60px 80px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-pricing::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            background: radial-gradient(var(--color-yellow), transparent);
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            max-width: 1420px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-pricing h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(28px, 3vw, 34px);
+            font-weight: 700;
+            line-height: 1.18;
+            letter-spacing: -0.45px;
+            margin-bottom: 24px;
+        }
+
+        .hero-benefits {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .hero-benefit {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--color-jet);
+        }
+
+        .hero-benefit svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-jet);
+        }
+
+        /* Pricing calculator mockup */
+        .calc-box {
+            max-width: 860px;
+            margin: 0 auto;
+            background: var(--color-white);
+            box-shadow: var(--shadow-card);
+            padding: 48px;
+        }
+
+        .calc-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .calc-label {
+            font-size: 14px;
+            color: var(--color-jet);
+        }
+
+        .calc-slider {
+            flex: 1;
+            margin: 0 24px;
+            height: 4px;
+            background: var(--color-lightgrey);
+            border-radius: 2px;
+            position: relative;
+            appearance: none;
+        }
+
+        .calc-slider-fill {
+            height: 4px;
+            background: var(--color-lightgrey);
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .calc-slider-fill::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30%;
+            height: 100%;
+            background: var(--color-jet);
+            border-radius: 2px;
+        }
+
+        .calc-slider-fill .dot {
+            position: absolute;
+            left: 30%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            background: var(--color-jet);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .calc-value {
+            font-size: 14px;
+            font-weight: 700;
+            min-width: 60px;
+            text-align: right;
+        }
+
+        .calc-divider {
+            height: 1px;
+            background: var(--color-lightgrey);
+            margin: 32px 0;
+        }
+
+        .calc-price-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .calc-price {
+            font-family: var(--font-heading);
+            font-size: 51px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .calc-currency {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .calc-period {
+            font-size: 14px;
+            color: var(--color-jet);
+            opacity: 0.5;
+        }
+
+        .calc-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--color-black);
+            color: var(--color-white);
+            font-size: 18px;
+            font-weight: 500;
+            padding: 13px 32px;
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+            min-height: 58px;
+        }
+
+        /* ============================
+           PAKIET SECTION
+           ============================ */
+        .pakiet-section {
+            background: var(--color-white);
+            padding: clamp(40px, 5.5vw, 100px) 60px;
+        }
+
+        .pakiet-inner {
+            max-width: 1420px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
@@ -54,7 +309,73 @@
             gap: 65px;
         }
 
-        /* --- Section heading (matches .hOB_6 .gD5HM) --- */
+        .pakiet-heading {
+            font-family: var(--font-heading);
+            font-size: clamp(28px, 3.5vw, 51px);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.9px;
+            text-align: center;
+        }
+
+        .pakiet-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            column-gap: 30px;
+            row-gap: 45px;
+            width: 100%;
+        }
+
+        .pakiet-item {
+            display: grid;
+            grid-template-columns: 32px 1fr;
+            grid-template-areas: "icon title" "icon desc";
+            gap: 12px 20px;
+            align-items: flex-start;
+        }
+
+        .pakiet-check {
+            grid-area: icon;
+            width: 32px;
+            height: 32px;
+            color: var(--color-jet);
+        }
+
+        .pakiet-title {
+            grid-area: title;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .pakiet-desc {
+            grid-area: desc;
+            font-size: 20px;
+            line-height: 1.4;
+            color: var(--color-jet);
+        }
+
+        .pakiet-desc span {
+            display: block;
+        }
+
+        /* ============================
+           PREMIUM SECTION (NEW)
+           ============================ */
+        .premium-section {
+            background: var(--color-ghostwhite);
+            padding: clamp(40px, 5.5vw, 100px) 60px;
+        }
+
+        .premium-inner {
+            max-width: 1420px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 65px;
+        }
+
         .premium-heading {
             font-family: var(--font-heading);
             font-size: clamp(28px, 3.5vw, 51px);
@@ -66,7 +387,6 @@
             max-width: 900px;
         }
 
-        /* --- Cards grid --- */
         .premium-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -74,7 +394,6 @@
             width: 100%;
         }
 
-        /* --- Single card --- */
         .premium-card {
             background: var(--color-white);
             border-radius: var(--border-radius);
@@ -85,7 +404,6 @@
             gap: 32px;
         }
 
-        /* Card header */
         .card-header {
             display: flex;
             flex-direction: column;
@@ -119,17 +437,14 @@
             font-weight: 700;
             line-height: 1.18;
             letter-spacing: -0.45px;
-            color: var(--color-jet);
         }
 
         .card-desc {
             font-size: 16px;
             line-height: 1.5;
-            color: var(--color-jet);
             opacity: 0.6;
         }
 
-        /* Pricing block */
         .card-pricing {
             display: flex;
             align-items: baseline;
@@ -147,24 +462,20 @@
             font-family: var(--font-heading);
             font-size: 36px;
             font-weight: 700;
-            color: var(--color-jet);
             line-height: 1;
         }
 
         .price-unit {
             font-size: 14px;
-            color: var(--color-jet);
             opacity: 0.5;
         }
 
         .price-plus {
             font-size: 20px;
             font-weight: 300;
-            color: var(--color-jet);
             opacity: 0.3;
         }
 
-        /* Features list (matches .AIdhf grid) */
         .card-features {
             display: flex;
             flex-direction: column;
@@ -182,53 +493,262 @@
             width: 20px;
             height: 20px;
             margin-top: 2px;
-            color: var(--color-jet);
         }
 
         .feature-text {
             font-size: 16px;
             line-height: 1.5;
-            color: var(--color-jet);
         }
 
-        .feature-text strong {
-            font-weight: 700;
-        }
+        .feature-text strong { font-weight: 700; }
 
-        /* Bottom note */
         .premium-note {
             text-align: center;
             font-size: 14px;
             line-height: 1.6;
-            color: var(--color-jet);
             opacity: 0.5;
             max-width: 600px;
+        }
+
+        /* ============================
+           FEATURES TABLE SECTION
+           ============================ */
+        .features-section {
+            background: var(--color-white);
+            padding: clamp(40px, 5.5vw, 100px) 60px;
+        }
+
+        .features-inner {
+            max-width: 1420px;
+            margin: 0 auto;
+        }
+
+        .features-heading {
+            font-family: var(--font-heading);
+            font-size: clamp(28px, 3.5vw, 51px);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.9px;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .features-subheading {
+            font-size: 16px;
+            text-align: center;
+            opacity: 0.6;
+            margin-bottom: 64px;
+        }
+
+        .features-columns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .feature-col {
+            background: var(--color-ghostwhite);
+            padding: 40px 32px;
+        }
+
+        .feature-col-title {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .feature-col-desc {
+            font-size: 14px;
+            line-height: 1.5;
+            opacity: 0.6;
+            margin-bottom: 32px;
+        }
+
+        .feature-group-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--color-lightgrey);
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .feature-list li {
+            font-size: 14px;
+            line-height: 1.6;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* ============================
+           CONTEXT INDICATOR
+           ============================ */
+        .context-label {
+            position: fixed;
+            top: 76px;
+            right: 20px;
+            background: var(--color-lemon);
+            color: var(--color-jet);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 12px;
+            z-index: 9999;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
 
         /* ============================
            RESPONSIVE
            ============================ */
         @media (max-width: 1024px) {
-            .premium-section { padding: 60px 32px; }
-            .premium-card { padding: 36px; }
+            .hero-pricing, .pakiet-section, .premium-section, .features-section { padding-left: 32px; padding-right: 32px; }
+            .site-header { padding: 0 32px; }
+            .breadcrumbs { padding: 0 32px; }
+            .pakiet-grid { grid-template-columns: repeat(2, 1fr); }
+            .features-columns { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
-            .premium-section { padding: 48px 20px; }
+            .hero-pricing, .pakiet-section, .premium-section, .features-section { padding-left: 20px; padding-right: 20px; }
+            .site-header { padding: 0 20px; }
+            .breadcrumbs { padding: 0 20px; }
+            .pakiet-grid { grid-template-columns: 1fr; }
             .premium-grid { grid-template-columns: 1fr; }
-            .premium-card { padding: 32px 24px; }
+            .hero-benefits { flex-direction: column; align-items: center; gap: 12px; }
             .card-pricing { flex-direction: column; gap: 12px; }
+            .header-nav { display: none; }
         }
     </style>
 </head>
 <body>
 
-<!-- =============================================
-     PREMIUM FEATURES SECTION
-     Insert on edrone.me/pl/cennik
-     AFTER "Otrzymujesz pelny pakiet mozliwosci"
-     ============================================= -->
+<!-- HEADER -->
+<header class="site-header">
+    <div class="header-inner">
+        <a href="#" class="logo">edrone</a>
+        <nav class="header-nav">
+            <a href="#">Funkcje</a>
+            <a href="#">Cennik</a>
+            <a href="#">Integracje</a>
+            <a href="#">Baza wiedzy</a>
+            <a href="#" class="header-cta">Zaloz darmowe konto --></a>
+        </nav>
+    </div>
+</header>
 
+<!-- BREADCRUMBS -->
+<div class="breadcrumbs">
+    <span>Strona glowna</span>
+    <span class="sep">></span>
+    <span class="current">Cennik</span>
+</div>
+
+<!-- NEW SECTION INDICATOR -->
+<div class="context-label">PODGLAD STRONY CENNIKA</div>
+
+<!-- HERO: PRICING CALCULATOR -->
+<section class="hero-pricing">
+    <div class="hero-inner">
+        <h1>Wybierz plan dopasowany do potrzeb swojego e-commerce</h1>
+        <div class="hero-benefits">
+            <div class="hero-benefit">
+                <svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Pelny dostep do wszystkich funkcji
+            </div>
+            <div class="hero-benefit">
+                <svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Bez podpinania karty
+            </div>
+            <div class="hero-benefit">
+                <svg viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Bezplatna wysylka email i SMS
+            </div>
+        </div>
+
+        <div class="calc-box">
+            <div class="calc-row">
+                <span class="calc-label">Ile masz aktywnych kontaktow w bazie</span>
+                <div style="flex:1; margin: 0 24px;">
+                    <div class="calc-slider-fill"><span class="dot"></span></div>
+                </div>
+                <span class="calc-value">2 500</span>
+            </div>
+            <div class="calc-row">
+                <span class="calc-label">Ile SMS-ow chcesz wysylac</span>
+                <div style="flex:1; margin: 0 24px;">
+                    <div class="calc-slider-fill"><span class="dot"></span></div>
+                </div>
+                <span class="calc-value">1 000</span>
+            </div>
+            <div class="calc-divider"></div>
+            <div class="calc-price-row">
+                <span class="calc-price">539</span>
+                <span class="calc-currency">PLN</span>
+            </div>
+            <div style="text-align:center; margin-bottom: 24px;">
+                <span class="calc-period">netto za miesiac</span>
+            </div>
+            <div style="text-align:center;">
+                <button class="calc-cta">Korzystam bez limitow --></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PAKIET SECTION -->
+<section class="pakiet-section">
+    <div class="pakiet-inner">
+        <h2 class="pakiet-heading">Otrzymujesz pelny pakiet mozliwosci, zawsze i niezaleznie od liczby kontaktow.</h2>
+        <div class="pakiet-grid">
+            <div class="pakiet-item">
+                <svg class="pakiet-check" viewBox="0 0 32 32" fill="none"><path d="M8 16l6 6 12-12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div class="pakiet-title">20+ scenariuszy Marketing Automation:</div>
+                <div class="pakiet-desc"><span>• Ratuj porzucone koszyki</span><span>• Po zakupie</span><span>• Przegladane produkty</span><span>• Rekomendacje</span><span>• Cross-selling</span></div>
+            </div>
+            <div class="pakiet-item">
+                <svg class="pakiet-check" viewBox="0 0 32 32" fill="none"><path d="M8 16l6 6 12-12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div class="pakiet-title">Narzedzia do rozbudowy bazy:</div>
+                <div class="pakiet-desc"><span>• Pop-up</span><span>• Banner</span><span>• Web-layer</span></div>
+            </div>
+            <div class="pakiet-item">
+                <svg class="pakiet-check" viewBox="0 0 32 32" fill="none"><path d="M8 16l6 6 12-12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div class="pakiet-title">Rozwiazania on-site:</div>
+                <div class="pakiet-desc"><span>• Widget Social Proof</span><span>• Smart Rekomendacje</span></div>
+            </div>
+            <div class="pakiet-item">
+                <svg class="pakiet-check" viewBox="0 0 32 32" fill="none"><path d="M8 16l6 6 12-12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div class="pakiet-title">Rozbudowana segmentacja bazy</div>
+            </div>
+            <div class="pakiet-item">
+                <svg class="pakiet-check" viewBox="0 0 32 32" fill="none"><path d="M8 16l6 6 12-12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div class="pakiet-title">Mozliwosc tworzenia wlasnych scenariuszy automatyzacji</div>
+            </div>
+            <div class="pakiet-item">
+                <svg class="pakiet-check" viewBox="0 0 32 32" fill="none"><path d="M8 16l6 6 12-12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div class="pakiet-title">Profil klienta 360° i sekcja CRM</div>
+            </div>
+            <div class="pakiet-item">
+                <svg class="pakiet-check" viewBox="0 0 32 32" fill="none"><path d="M8 16l6 6 12-12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div class="pakiet-title">Multichannel inbox</div>
+            </div>
+            <div class="pakiet-item">
+                <svg class="pakiet-check" viewBox="0 0 32 32" fill="none"><path d="M8 16l6 6 12-12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div class="pakiet-title">Analityka produktowa</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- =============================================
+     NOWA SEKCJA: PREMIUM FEATURES
+     ============================================= -->
 <section class="premium-section">
     <div class="premium-inner">
 
@@ -328,6 +848,78 @@
 
         <p class="premium-note">Funkcje premium mozesz dolaczyc do dowolnego planu edrone. Oplaty naliczane sa tylko za realne efekty — rozmowy obsluzone przez AI lub zamowienia w Twoim sklepie.</p>
 
+    </div>
+</section>
+<!-- /PREMIUM SECTION -->
+
+
+<!-- FEATURES TABLE -->
+<section class="features-section">
+    <div class="features-inner">
+        <h2 class="features-heading">Poznaj mozliwosci jakie daje Ci edrone.</h2>
+        <p class="features-subheading">Wszystkie funkcje masz dostepne w ramach jednego abonamentu.</p>
+
+        <div class="features-columns">
+            <div class="feature-col">
+                <h3 class="feature-col-title">Automatyzuj</h3>
+                <p class="feature-col-desc">Zwieksz wartosc zamowien, czestotliwosc zakupow i zjednaj sobie klientow juz od pierwszego kontaktu.</p>
+                <div class="feature-group-title">Marketing Automation poza strona</div>
+                <ul class="feature-list">
+                    <li>20+ gotowych scenariuszy</li>
+                    <li>Przegladane produkty</li>
+                    <li>Ratowanie porzuconych koszykow</li>
+                    <li>Zapis do newslettera</li>
+                    <li>Przywracanie klientow</li>
+                    <li>Scenariusz urodzinowy</li>
+                    <li>Rekomendacje i cross-selling</li>
+                </ul>
+                <div class="feature-group-title">Marketing Automation na stronie</div>
+                <ul class="feature-list">
+                    <li>Pop-upy</li>
+                    <li>Web-layery</li>
+                    <li>Widget Social Proof</li>
+                    <li>Smart Rekomendacje</li>
+                </ul>
+            </div>
+            <div class="feature-col">
+                <h3 class="feature-col-title">Buduj relacje</h3>
+                <p class="feature-col-desc">Lepiej poznaj swoich klientow i zarzadzaj relacjami z nimi.</p>
+                <div class="feature-group-title">Customer Intelligence</div>
+                <ul class="feature-list">
+                    <li>Segmentacja CRM</li>
+                    <li>Profil klienta 360°</li>
+                    <li>Analiza RFM</li>
+                    <li>Tagowanie klientow</li>
+                    <li>Historia interakcji</li>
+                </ul>
+                <div class="feature-group-title">Obsluga klienta</div>
+                <ul class="feature-list">
+                    <li>Multichannel inbox</li>
+                    <li>Czat na stronie</li>
+                    <li>Integracja z WhatsApp</li>
+                </ul>
+            </div>
+            <div class="feature-col">
+                <h3 class="feature-col-title">Rozwijaj sie</h3>
+                <p class="feature-col-desc">Komunikuj sie z klientami w wielu kanalach jednoczesnie.</p>
+                <div class="feature-group-title">SMS & Email Marketing</div>
+                <ul class="feature-list">
+                    <li>Newslettery email</li>
+                    <li>Kampanie SMS</li>
+                    <li>Dynamiczna personalizacja</li>
+                    <li>Drag & drop editor</li>
+                    <li>Segmentacja odbiorców</li>
+                    <li>Testy A/B</li>
+                    <li>Analityka kampanii</li>
+                </ul>
+                <div class="feature-group-title">Analityka</div>
+                <ul class="feature-list">
+                    <li>Analityka produktowa</li>
+                    <li>Raporty sprzedazowe</li>
+                    <li>Dashboard KPI</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </section>
 
