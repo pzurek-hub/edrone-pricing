@@ -391,10 +391,13 @@
         .premium-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: subgrid;
             gap: 32px;
             width: 100%;
+            align-items: start;
         }
 
+        /* Each card spans 4 implicit rows: header, pricing, features, (stretch) */
         .premium-card {
             background: var(--color-white);
             border-radius: var(--border-radius);
@@ -402,13 +405,21 @@
             padding: 40px;
             display: flex;
             flex-direction: column;
-            gap: 28px;
         }
 
         .card-header {
             display: flex;
             flex-direction: column;
             gap: 8px;
+            margin-bottom: 28px;
+        }
+
+        .card-desc {
+            font-size: 16px;
+            line-height: 1.5;
+            opacity: 0.6;
+            /* Fixed height ensures prices start on same line across cards */
+            min-height: 74px;
         }
 
         .card-label {
@@ -439,22 +450,19 @@
             font-weight: 700;
             line-height: 1.18;
             letter-spacing: -0.45px;
+            min-height: 40px;
         }
 
-        .card-desc {
-            font-size: 16px;
-            line-height: 1.5;
-            opacity: 0.6;
-        }
+        /* card-desc styles defined in card-header block above */
 
         .card-pricing {
             display: flex;
-            align-items: baseline;
-            gap: 24px;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 4px;
+            margin-bottom: 28px;
         }
 
-        .price-item {
+        .price-row {
             display: flex;
             align-items: baseline;
             gap: 6px;
@@ -464,7 +472,7 @@
             font-family: var(--font-heading);
             font-size: 36px;
             font-weight: 700;
-            line-height: 1;
+            line-height: 1.2;
         }
 
         .price-unit {
@@ -771,12 +779,11 @@
                 </div>
 
                 <div class="card-pricing">
-                    <div class="price-item">
+                    <div class="price-row">
                         <span class="price-amount">49 zl</span>
                         <span class="price-unit">netto / mies.</span>
                     </div>
-                    <span class="price-plus">+</span>
-                    <div class="price-item">
+                    <div class="price-row">
                         <span class="price-amount">2 zl</span>
                         <span class="price-unit">za konwersacje obsluzona przez AI</span>
                     </div>
@@ -815,12 +822,11 @@
                 </div>
 
                 <div class="card-pricing">
-                    <div class="price-item">
+                    <div class="price-row">
                         <span class="price-amount">49 zl</span>
                         <span class="price-unit">netto / mies.</span>
                     </div>
-                    <span class="price-plus">+</span>
-                    <div class="price-item">
+                    <div class="price-row">
                         <span class="price-amount">1 zl</span>
                         <span class="price-unit">za zamowienie w miesiacu rozliczeniowym</span>
                     </div>
@@ -859,12 +865,11 @@
                 </div>
 
                 <div class="card-pricing">
-                    <div class="price-item">
+                    <div class="price-row">
                         <span class="price-amount">59 zl</span>
                         <span class="price-unit">netto / mies.</span>
                     </div>
-                    <span class="price-plus">+</span>
-                    <div class="price-item">
+                    <div class="price-row">
                         <span class="price-amount">2,5%</span>
                         <span class="price-unit">od zamowienia przypisanego do ramek</span>
                     </div>
