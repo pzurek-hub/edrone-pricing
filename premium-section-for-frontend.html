@@ -1,0 +1,315 @@
+<!--
+  PREMIUM FEATURES SECTION
+  ========================
+  Wstawic na stronie /pl/cennik POMIEDZY:
+  - sekcja "Otrzymujesz pelny pakiet mozliwosci" (.r0w50.tGTn_)
+  - sekcja "Poznaj mozliwosci jakie daje Ci edrone" (.r0w50.u8Se5.va83l[data-table])
+
+  Podglad: https://pzurek-hub.github.io/edrone-pricing/
+  Repo:    https://github.com/pzurek-hub/edrone-pricing
+-->
+
+
+<!-- ============ CSS ============ -->
+<style>
+/* Premium section — insert into global stylesheet or scoped */
+.premium-section {
+    background: var(--color-ghostwhite, #F5F3F6);
+    padding: clamp(40px, 5.5vw, 100px) 60px;
+}
+
+.premium-inner {
+    max-width: 1420px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 65px;
+}
+
+.premium-heading {
+    font-family: var(--header-font-family, 'Helvetica Neue', Arial, sans-serif);
+    font-size: clamp(28px, 3.5vw, 51px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.9px;
+    color: var(--color-dark, #2D2D29);
+    text-align: center;
+    max-width: 900px;
+}
+
+.premium-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    width: 100%;
+    align-items: start;
+}
+
+.premium-card {
+    background: var(--color-light, #FFFFFF);
+    border-radius: 0px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 50px -10px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Radial gradient washes — top-left corner, 60% to 0% opacity */
+.premium-card--chat {
+    background: radial-gradient(ellipse at 0% 0%, rgba(0, 255, 233, 0.6) 0%, rgba(0, 255, 233, 0) 50%) var(--color-light, #FFFFFF);
+}
+.premium-card--reviews {
+    background: radial-gradient(ellipse at 0% 0%, rgba(172, 129, 219, 0.6) 0%, rgba(172, 129, 219, 0) 50%) var(--color-light, #FFFFFF);
+}
+.premium-card--frames {
+    background: radial-gradient(ellipse at 0% 0%, rgba(255, 167, 119, 0.6) 0%, rgba(255, 167, 119, 0) 50%) var(--color-light, #FFFFFF);
+}
+
+.premium-card .card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 28px;
+}
+
+.premium-card .card-title {
+    font-family: var(--header-font-family, 'Helvetica Neue', Arial, sans-serif);
+    font-size: clamp(24px, 2.5vw, 34px);
+    font-weight: 700;
+    line-height: 1.18;
+    letter-spacing: -0.45px;
+    color: var(--color-dark, #2D2D29);
+    min-height: 80px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.premium-card .card-desc {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-dark, #2D2D29);
+    opacity: 0.6;
+    min-height: 74px;
+}
+
+.premium-card .card-pricing {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 28px;
+}
+
+.premium-card .price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.premium-card .price-amount {
+    font-family: var(--header-font-family, 'Helvetica Neue', Arial, sans-serif);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--color-dark, #2D2D29);
+    line-height: 1.2;
+}
+
+.premium-card .price-unit {
+    font-size: 14px;
+    color: var(--color-dark, #2D2D29);
+    opacity: 0.5;
+}
+
+.premium-card .card-features {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.premium-card .feature-item {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.premium-card .feature-check {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    color: var(--color-dark, #2D2D29);
+}
+
+.premium-card .feature-text {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-dark, #2D2D29);
+}
+
+.premium-card .feature-text strong {
+    font-weight: 700;
+}
+
+.premium-note {
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-dark, #2D2D29);
+    opacity: 0.5;
+    max-width: 600px;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .premium-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 1024px) {
+    .premium-section { padding: 60px 32px; }
+    .premium-card { padding: 36px; }
+}
+
+@media (max-width: 768px) {
+    .premium-section { padding: 48px 20px; }
+    .premium-grid { grid-template-columns: 1fr; }
+    .premium-card { padding: 32px 24px; }
+    .premium-card .card-title { min-height: auto; }
+    .premium-card .card-desc { min-height: auto; }
+}
+</style>
+
+
+<!-- ============ HTML ============ -->
+<section class="premium-section">
+    <div class="premium-inner">
+
+        <h2 class="premium-heading">Rozszerz mozliwosci edrone o funkcje premium.</h2>
+
+        <div class="premium-grid">
+
+            <!-- AI Sales Chat -->
+            <div class="premium-card premium-card--chat">
+                <div class="card-header">
+                    <h3 class="card-title">AI Sales Chat</h3>
+                    <p class="card-desc">Asystent AI, ktory sprzedaje i obsluguje klientow 24/7. Placisz tylko za rozmowy, w ktorych AI realnie pomoglo.</p>
+                </div>
+                <div class="card-pricing">
+                    <div class="price-row">
+                        <span class="price-amount">49 zl</span>
+                        <span class="price-unit">netto / mies.</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price-amount">2 zl</span>
+                        <span class="price-unit">za konwersacje obsluzona przez AI</span>
+                    </div>
+                </div>
+                <div class="card-features">
+                    <div class="feature-item">
+                        <svg class="feature-check" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span class="feature-text"><strong>Rekomenduje produkty</strong> i doradza klientom w czasie rzeczywistym</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg class="feature-check" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span class="feature-text"><strong>Rozwiazuje ok. 60% rozmow</strong> samodzielnie — bez udzialu konsultanta</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg class="feature-check" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span class="feature-text"><strong>Odciaza zespol supportu</strong> — przekazuje tylko rozmowy wymagajace czlowieka</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg class="feature-check" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span class="feature-text">Bez oplat za rozmowy przejete przez konsultanta</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg class="feature-check" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span class="feature-text">Jedna oplata za cala konwersacje, niezaleznie od liczby wiadomosci</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reviews -->
+            <div class="premium-card premium-card--reviews">
+                <div class="card-header">
+                    <h3 class="card-title">Reviews</h3>
+                    <p class="card-desc">Automatycznie zbieraj opinie od klientow po zakupie. Buduj zaufanie i zwieksz konwersje — bez dodatkowej pracy.</p>
+                </div>
+                <div class="card-pricing">
+                    <div class="price-row">
+                        <span class="price-amount">49 zl</span>
+                        <span class="price-unit">netto / mies.</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price-amount">1 zl</span>
+                        <span class="price-unit">za zamowienie w miesiacu rozliczeniowym</span>
+                    </div>
+                </div>
+                <div class="card-features">
+                    <div class="feature-item">
+                        <svg class="feature-check" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span class="feature-text"><strong>Automatyczne zbieranie opinii</strong> po kazdym zakupie — zero pracy recznej</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg class="feature-check" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span class="feature-text"><strong>Prosty, przewidywalny cennik</strong> dopasowany do skali Twojego biznesu</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg class="feature-check" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span class="feature-text"><strong>Bez limitu na wysylki e-mail</strong> — wysylaj tyle prosb, ile potrzebujesz</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg class="feature-check" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span class="feature-text">Pierwszy miesiac: tylko 49 zl, bez oplaty za zamowienia</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg class="feature-check" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span class="feature-text">Koszt rosnie razem z Twoim biznesem — nie przepłacasz w slabszych okresach</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Recommendation Frames -->
+            <div class="premium-card premium-card--frames">
+                <div class="card-header">
+                    <h3 class="card-title">AI Recommendation Frames</h3>
+                    <p class="card-desc">Dynamiczne bloki produktowe na stronach sklepu, dopasowane do zachowania uzytkownika i logiki AI.</p>
+                </div>
+                <div class="card-pricing">
+                    <div class="price-row">
+                        <span class="price-amount">59 zl</span>
+                        <span class="price-unit">netto / mies.</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price-amount">2,5%</span>
+                        <span class="price-unit">od zamowienia przypisanego do ramek</span>
+                    </div>
+                </div>
+                <div class="card-features">
+                    <div class="feature-item">
+                        <svg class="feature-check" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span class="feature-text"><strong>Personalizowane rekomendacje</strong> produktow na kazdej stronie sklepu</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg class="feature-check" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span class="feature-text"><strong>AI dopasowuje produkty</strong> do zachowania uzytkownika i danych sklepu</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg class="feature-check" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span class="feature-text"><strong>Wspiera proces zakupowy</strong> — wiecej konwersji i wyzsza wartosc koszyka</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg class="feature-check" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span class="feature-text">Prowizja tylko od zamowien przypisanych do ramek w atrybucji 30 dni</span>
+                    </div>
+                    <div class="feature-item">
+                        <svg class="feature-check" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span class="feature-text">Placisz za efekt — jesli ramki nie generuja sprzedazy, nie placisz prowizji</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <p class="premium-note">Funkcje premium mozesz dolaczyc do dowolnego planu edrone. Oplaty naliczane sa tylko za realne efekty — rozmowy obsluzone przez AI, zamowienia w sklepie lub sprzedaz z rekomendacji.</p>
+
+    </div>
+</section>
